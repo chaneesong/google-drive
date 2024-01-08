@@ -1,0 +1,29 @@
+name: Google Drive Api Test
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  reqeust:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Google Drive API Test
+        env:
+          GOOGLE_DRIVE_API_CREDENTIALS: ${{ secrets.GOOGLE_DRIVE_API_CREDENTIALS }}
+        run: |
+          node upload_to_google_drive.js
