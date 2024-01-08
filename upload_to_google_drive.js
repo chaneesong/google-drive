@@ -37,5 +37,5 @@ async function uploadToGoogleDrive(filePath) {
 }
 
 if (require.main === module) {
-  uploadToGoogleDrive('');
+  uploadToGoogleDrive('MyFile.txt');
 }
